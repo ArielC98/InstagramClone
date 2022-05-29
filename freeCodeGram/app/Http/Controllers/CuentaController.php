@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Cuenta;
 
@@ -68,7 +67,7 @@ class CuentaController extends Controller
     public function edit($id)
     {
         $cuenta = $this->cuentas->obtenerCuentaPorCodigo($id);
-        return view('cuenta.editar', ['cuenta' => $cuenta]);
+        return view('cuentas.editar', ['cuenta' => $cuenta]);
     }
 
     /**
@@ -94,8 +93,8 @@ class CuentaController extends Controller
      */
     public function destroy($id)
     {
-        $cuenta = Alumno::find($id);
+        $cuenta = Cuenta::find($id);
         $cuenta->delete();
-        return *redirect()->action([AlumnoController::class, 'index']);
+        return redirect()->action([CuentaController::class, 'index']);
     }
 }
